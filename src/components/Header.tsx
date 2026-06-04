@@ -1,12 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { contactInfo } from '@/lib/constants';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    function onScroll() {
+      if (window.innerWidth >= 768) return; // desktop: sempre visivel, sem ocultar
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY.current && currentY > 80) {
+        setHidden(true);
+      } else if (currentY < lastScrollY.current) {
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const navItems = [
     { label: 'Serviços', href: '#profile' },
@@ -17,7 +35,11 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200">
+      <header
+        className={`sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-transform duration-300 ${
+          hidden ? '-translate-y-full' : 'translate-y-0'
+        }`}
+      >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
