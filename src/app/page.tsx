@@ -1,10 +1,11 @@
 import {
   Header,
   Hero,
+  ClientProfileSection,
   GabrielaSection,
   DifferentialsSection,
-  ServicesSection,
   TrustSection,
+  FAQSection,
   CTAFinalSection,
   Footer,
 } from '@/components';
@@ -15,10 +16,11 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <ClientProfileSection />
         <GabrielaSection />
         <DifferentialsSection />
-        <ServicesSection />
         <TrustSection />
+        <FAQSection />
         <CTAFinalSection />
       </main>
       <Footer />
