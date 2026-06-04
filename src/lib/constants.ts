@@ -181,7 +181,7 @@ export const faqItems = [
 
 export const contactInfo = {
   whatsapp: 'https://wa.me/5511999999999',
-  email: 'contato@fullcycle.com.br', // TODO: substituir pelo email real quando disponivel
-  linkedin: 'https://www.linkedin.com/in/gabriela-gomes-674b5689/',
+  email: 'contato@fullcycle.com.br',
+  linkedin: 'https://linkedin.com',
   instagram: 'https://instagram.com',
 };

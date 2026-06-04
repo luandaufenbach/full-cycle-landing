@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { gabriela, gabrielaTimeline, contactInfo } from "@/lib/constants";
+import { gabriela, gabrielaTimeline } from "@/lib/constants";
 import Image from "next/image";
 
 const containerVariants = {
@@ -16,16 +16,6 @@ const itemVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
-
-function LinkedInIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
 
 export function GabrielaSection() {
   return (
@@ -64,7 +54,7 @@ export function GabrielaSection() {
               </p>
 
               {/* Languages */}
-              <div className="mb-4">
+              <div>
                 <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">
                   Idiomas
                 </p>
@@ -78,19 +68,6 @@ export function GabrielaSection() {
                     </span>
                   ))}
                 </div>
-              </div>
-
-              {/* LinkedIn */}
-              <div className="flex justify-center md:justify-start">
-                <a
-                  href={contactInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/20 text-primary text-sm font-medium hover:bg-primary/5 hover:border-primary/40 transition-all duration-200"
-                >
-                  <LinkedInIcon size={15} />
-                  Ver perfil no LinkedIn
-                </a>
               </div>
             </div>
           </motion.div>
