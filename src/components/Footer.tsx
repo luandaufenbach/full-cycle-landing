@@ -1,8 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { MessageCircle, Mail } from 'lucide-react';
-import { companyData, gabriela, contactInfo } from '@/lib/constants';
+import { companyData, contactInfo } from '@/lib/constants';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +15,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-serif font-bold">
-                logo
+                FC
               </div>
               <span className="font-serif font-bold text-white">Full Cycle</span>
             </div>
@@ -34,6 +33,11 @@ export function Footer() {
             <h4 className="font-semibold text-white mb-4">Navegação</h4>
             <ul className="space-y-3 text-sm">
               <li>
+                <a href="#profile" className="hover:text-primary transition-colors">
+                  Qual é o seu caso?
+                </a>
+              </li>
+              <li>
                 <a href="#about" className="hover:text-primary transition-colors">
                   Sobre Gabriela
                 </a>
@@ -41,11 +45,6 @@ export function Footer() {
               <li>
                 <a href="#differential" className="hover:text-primary transition-colors">
                   Diferenciais
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-primary transition-colors">
-                  Serviços
                 </a>
               </li>
               <li>
@@ -81,35 +80,6 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-neutral-700 pt-8 mb-8">
-          {/* Gabriela Info */}
-          <div className="mb-8">
-            <h4 className="font-semibold text-white mb-4">Profissional</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-              <div>
-                <p className="text-neutral-400 mb-2">
-                  <span className="font-medium text-white">{gabriela.name}</span>
-                  <span className="block text-xs text-neutral-500 mt-1">{gabriela.title}</span>
-                </p>
-                <p className="text-xs text-neutral-600">
-                  Especialista em Restauração Ecológica
-                </p>
-              </div>
-              <div>
-                <p className="text-neutral-400 mb-2">
-                  <span className="font-medium text-white">Experiência</span>
-                </p>
-                <ul className="text-xs text-neutral-600 space-y-1">
-                  <li>Brasil: {gabriela.yearsInBrazil} anos (2012-2026)</li>
-                  <li>Austrália: {gabriela.yearsInAustralia} anos (2015-2026)</li>
-                  <li>Trilíngue: {gabriela.languages.join(' • ')}</li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { MessageCircle, ChevronDown } from 'lucide-react';
 import { contactInfo } from '@/lib/constants';
 
 export function Hero() {
@@ -30,18 +30,15 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Logo Small */}
+        {/* Badge */}
         <motion.div
           className="flex items-center justify-center gap-2 mb-6 md:mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-serif font-bold">
-            logo
-          </div>
-          <span className="text-xs font-medium text-primary uppercase tracking-widest">
-            Full Cycle
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full border border-primary/20">
+            Consultoria Ambiental • Santa Catarina
           </span>
         </motion.div>
 
@@ -52,18 +49,10 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          Restauração Ecológica
+          Sua empresa tem pendências
+          <br className="hidden sm:block" />
+          <span className="text-secondary"> ambientais em SC?</span>
         </motion.h1>
-
-        {/* Subtitle with Geographic Focus */}
-        <motion.p
-          className="text-lg md:text-xl text-neutral-600 mb-6 font-medium"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          Brasil • Austrália • Santa Catarina
-        </motion.p>
 
         {/* Description */}
         <motion.div
@@ -73,15 +62,13 @@ export function Hero() {
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-            Gabriela Gomes, especialista com <span className="font-semibold text-primary">12+ anos de experiência</span> internacional em restauração e consultoria ambiental.
-          </p>
-          <p className="text-base md:text-lg text-neutral-700 leading-relaxed mt-3">
-            Trazendo metodologias de classe mundial para resolver seus desafios ambientais.
+            Gabriela Gomes resolve licenças, CAR, relatórios ambientais e restauração ecológica — com metodologia científica e <span className="font-semibold text-primary">12+ anos de experiência internacional</span>.
           </p>
         </motion.div>
 
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -90,11 +77,39 @@ export function Hero() {
             href={contactInfo.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl text-base"
           >
-            Conversar Agora
-            <ArrowDown className="rotate-90" size={20} />
+            <MessageCircle size={20} />
+            Falar com Gabriela
           </a>
+          <a
+            href="#profile"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary/30 text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-base"
+          >
+            Ver como posso ajudar
+            <ChevronDown size={18} />
+          </a>
+        </motion.div>
+
+        {/* Social proof strip */}
+        <motion.div
+          className="mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+        >
+          <span className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            100+ projetos entregues
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            Austrália & Brasil
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            ISO 14001 & ISO 14064
+          </span>
         </motion.div>
       </motion.div>
     </section>

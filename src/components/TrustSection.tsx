@@ -1,32 +1,67 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { trustMetrics, gabriela } from '@/lib/constants';
 
+function AnimatedCounter({
+  numericValue,
+  suffix,
+  label,
+}: {
+  numericValue: number;
+  suffix: string;
+  label: string;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+
+  useEffect(() => {
+    if (!isInView) return;
+    const duration = 1600;
+    const startTime = performance.now();
+
+    function step(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * numericValue));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }, [isInView, numericValue]);
+
+  return (
+    <div
+      ref={ref}
+      className="bg-white rounded-xl border border-neutral-200 p-6 text-center hover:shadow-card transition-all duration-300"
+    >
+      <p className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2">
+        {count}
+        {suffix}
+      </p>
+      <p className="text-xs md:text-sm text-neutral-600 font-medium">{label}</p>
+    </div>
+  );
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 export function TrustSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <section className="py-16 md:py-24 bg-neutral-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Metrics Grid */}
+        {/* Metrics */}
         <motion.div
           className="mb-16"
           variants={containerVariants}
@@ -38,23 +73,17 @@ export function TrustSection() {
             variants={itemVariants}
             className="text-2xl md:text-3xl font-serif font-bold text-primary mb-10 text-center"
           >
-            Números que Falam
+            Números que falam por si
           </motion.h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {trustMetrics.map((metric, idx) => (
-              <motion.div
+              <AnimatedCounter
                 key={idx}
-                variants={itemVariants}
-                className="bg-white rounded-lg border border-neutral-200 p-6 text-center hover:shadow-card transition-all duration-300"
-              >
-                <p className="text-3xl md:text-4xl font-serif font-bold text-primary mb-2">
-                  {metric.value}
-                </p>
-                <p className="text-xs md:text-sm text-neutral-600 font-medium">
-                  {metric.label}
-                </p>
-              </motion.div>
+                numericValue={metric.numericValue}
+                suffix={metric.suffix}
+                label={metric.label}
+              />
             ))}
           </div>
         </motion.div>
@@ -88,15 +117,6 @@ export function TrustSection() {
                   </span>
                 </motion.li>
               ))}
-              <motion.li
-                variants={itemVariants}
-                className="flex items-center gap-4 pt-4 border-t border-primary/10"
-              >
-                <span className="text-2xl text-primary">✓</span>
-                <span className="text-base md:text-lg text-neutral-800 font-medium">
-                  Diploma of Horticulture • South Regional TAFE (Austrália)
-                </span>
-              </motion.li>
             </ul>
           </div>
         </motion.div>

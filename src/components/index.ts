@@ -1,8 +1,9 @@
 export { Header } from './Header';
 export { Hero } from './Hero';
+export { ClientProfileSection } from './ClientProfileSection';
 export { GabrielaSection } from './GabrielaSection';
 export { DifferentialsSection } from './DifferentialsSection';
-export { ServicesSection } from './ServicesSection';
 export { TrustSection } from './TrustSection';
+export { FAQSection } from './FAQSection';
 export { CTAFinalSection } from './CTAFinalSection';
 export { Footer } from './Footer';
