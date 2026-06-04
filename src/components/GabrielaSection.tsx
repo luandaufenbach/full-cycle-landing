@@ -128,18 +128,6 @@ export function GabrielaSection() {
                 );
               })}
             </div>
-
-            {/* Legend */}
-            <div className="mt-6 pt-5 border-t border-neutral-200 flex items-center gap-5 text-xs text-neutral-500">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-                Brasil
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent-au" />
-                Austrália
-              </span>
-            </div>
           </motion.div>
         </motion.div>
       </div>
