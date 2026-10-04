@@ -1,86 +1,36 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { Globe, Microscope, CheckCircle2 } from 'lucide-react';
 import { differentials } from '@/lib/constants';
+import { SectionHeading } from './SectionHeading';
 
 export function DifferentialsSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
-    <section
-      id="differential"
-      className="py-16 md:py-24 bg-gradient-to-b from-neutral-50 to-white"
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-12 md:mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-serif font-bold text-primary mb-4"
-          >
-            Por que Escolher Gabriela?
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-neutral-600 max-w-2xl mx-auto"
-          >
-            Três pilares que definem nossa diferenciação no mercado
-          </motion.p>
-        </motion.div>
+    <section className="relative overflow-hidden bg-primary py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(50rem_25rem_at_100%_0%,rgb(212_165_116/0.18),transparent),radial-gradient(40rem_25rem_at_0%_100%,rgb(31_77_77/0.6),transparent)]"
+      />
 
-        {/* Differentials Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          {differentials.map((diff, idx) => (
-            <motion.div
-              key={idx}
-              variants={itemVariants}
-              whileHover={{ y: -4 }}
-              className={`p-8 rounded-xl border border-neutral-200 ${diff.color} hover:shadow-card-hover transition-all duration-300 cursor-pointer`}
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          tone="light"
+          eyebrow="Diferenciais"
+          title="Por que escolher a Full Cycle"
+          description="Conhecimento técnico construído em dois países, aplicado com rigor a cada projeto."
+        />
+
+        <ul className="mt-14 grid gap-6 md:grid-cols-3">
+          {differentials.map(({ title, description, icon: Icon }) => (
+            <li
+              key={title}
+              className="reveal rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
             >
-              <motion.div className="text-4xl mb-4">
-                {idx === 0 && <Globe size={40} className="text-primary" />}
-                {idx === 1 && <Microscope size={40} className="text-primary" />}
-                {idx === 2 && <CheckCircle2 size={40} className="text-primary" />}
-              </motion.div>
-              <h3 className="text-xl font-semibold text-primary mb-3">
-                {diff.title}
-              </h3>
-              <p className="text-neutral-700 leading-relaxed text-sm md:text-base">
-                {diff.description}
-              </p>
-            </motion.div>
+              <span className="flex size-12 items-center justify-center rounded-xl bg-gold/15 text-gold">
+                <Icon size={24} aria-hidden="true" />
+              </span>
+              <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
+              <p className="mt-3 leading-relaxed text-primary-100">{description}</p>
+            </li>
           ))}
-        </motion.div>
+        </ul>
       </div>
     </section>
   );

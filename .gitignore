@@ -36,24 +36,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# =====================================
-# DOCUMENTAÇÃO INTERNA / IA
-# =====================================
-
+# documentação interna / IA
 AGENTS.md
-ARCHITECTURE.md
 CLAUDE.md
-COMECE_AQUI.txt
-DEPLOYMENT_GUIDE.md
-GUIA_CUSTOMIZACAO.md
-INDICE_COMPLETO.md
-QUICK_START.md
-README_LANDING.md
-RESUMO_EXECUTIVO.md
-STATUS_DESENVOLVIMENTO.md
-TESTING_GUIDE.md
-VISUALIZACAO_LAYOUT.md
 README.md
-
-# Caso futuramente crie uma pasta docs
 /docs

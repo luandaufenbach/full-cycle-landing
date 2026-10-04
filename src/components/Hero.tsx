@@ -1,117 +1,90 @@
-'use client';
+import Image from 'next/image';
+import { ArrowDown, MapPin, MessageCircle } from 'lucide-react';
+import { contactInfo, gabriela } from '@/lib/constants';
+import gabrielaPhoto from '@/assets/gabriela-gomes.png';
 
-import { motion } from 'framer-motion';
-import { MessageCircle, ChevronDown } from 'lucide-react';
-import { contactInfo } from '@/lib/constants';
+const proofPoints = ['100+ projetos entregues', 'Austrália e Brasil', 'ISO 14001 e ISO 14064'];
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen md:h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-neutral-50 to-white">
-      {/* Background Elements */}
-      <motion.div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `linear-gradient(135deg, #2D5016 0%, #1F4D4D 50%, #D4A574 100%)`,
-        }}
-        animate={{
-          opacity: [0.15, 0.25, 0.15],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
+    <section id="inicio" className="relative overflow-hidden bg-sand-50">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_30rem_at_85%_-10%,rgb(212_165_116/0.22),transparent),radial-gradient(40rem_30rem_at_-10%_110%,rgb(45_80_22/0.10),transparent)]"
       />
 
-      {/* Content */}
-      <motion.div
-        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 md:py-0"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Badge */}
-        <motion.div
-          className="flex items-center justify-center gap-2 mb-6 md:mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full border border-primary/20">
-            Consultoria Ambiental • Santa Catarina
-          </span>
-        </motion.div>
-
-        {/* Main Title */}
-        <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary mb-4 leading-tight"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          Sua empresa tem pendências
-          <br className="hidden sm:block" />
-          <span className="text-secondary"> ambientais em SC?</span>
-        </motion.h1>
-
-        {/* Description */}
-        <motion.div
-          className="max-w-2xl mx-auto mb-8 md:mb-12"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-            Gabriela Gomes resolve licenças, CAR, relatórios ambientais e restauração ecológica — com metodologia científica e <span className="font-semibold text-primary">12+ anos de experiência internacional</span>.
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-12 sm:px-6 md:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8 lg:pb-28">
+        <div>
+          <p className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-3 py-1 text-xs font-semibold text-primary">
+            <MapPin size={14} aria-hidden="true" />
+            Consultoria ambiental · Santa Catarina
           </p>
-        </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <a
-            href={contactInfo.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl text-base"
-          >
-            <MessageCircle size={20} />
-            Falar com Gabriela
-          </a>
-          <a
-            href="#profile"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary/30 text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-base"
-          >
-            Ver como posso ajudar
-            <ChevronDown size={18} />
-          </a>
-        </motion.div>
+          <h1 className="mt-6 animate-fade-up font-serif text-4xl font-bold leading-[1.15] text-primary [animation-delay:60ms] sm:text-5xl lg:text-[3.25rem]">
+            Sua empresa tem pendências <span className="text-earth">ambientais em SC?</span>
+          </h1>
 
-        {/* Social proof strip */}
-        <motion.div
-          className="mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-500"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-        >
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            100+ projetos entregues
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Austrália & Brasil
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            ISO 14001 & ISO 14064
-          </span>
-        </motion.div>
-      </motion.div>
+          <p className="mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-neutral-700 [animation-delay:120ms]">
+            <strong className="font-semibold text-neutral-900">{gabriela.name}</strong> resolve
+            licenças, CAR, relatórios ambientais e restauração ecológica, com metodologia
+            científica e mais de 12 anos de experiência internacional.
+          </p>
+
+          <div className="mt-8 flex animate-fade-up flex-col gap-3 [animation-delay:180ms] sm:flex-row">
+            <a
+              href={contactInfo.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
+            >
+              <MessageCircle size={20} aria-hidden="true" />
+              Falar com Gabriela
+            </a>
+            <a
+              href="#servicos"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary/25 bg-white/60 px-7 py-3.5 font-semibold text-primary transition-colors hover:border-primary/50 hover:bg-white"
+            >
+              Ver como podemos ajudar
+              <ArrowDown
+                size={18}
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-y-0.5"
+              />
+            </a>
+          </div>
+
+          <ul className="mt-10 flex animate-fade-up flex-wrap gap-x-6 gap-y-2 text-sm text-earth [animation-delay:240ms]">
+            {proofPoints.map((point) => (
+              <li key={point} className="flex items-center gap-2">
+                <span aria-hidden="true" className="size-1.5 rounded-full bg-primary" />
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-sm animate-fade-up [animation-delay:150ms] lg:max-w-[25rem]">
+          <div
+            aria-hidden="true"
+            className="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-gold/35 via-transparent to-teal/25 blur-2xl"
+          />
+          <div className="relative aspect-square overflow-hidden rounded-[2rem] shadow-2xl shadow-primary/15 ring-1 ring-black/5">
+            <Image
+              src={gabrielaPhoto}
+              alt="Gabriela Gomes em trabalho de campo"
+              fill
+              preload
+              placeholder="blur"
+              sizes="(min-width: 640px) 400px, 90vw"
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="absolute -bottom-6 left-4 right-4 rounded-2xl bg-white/95 p-4 shadow-xl ring-1 ring-black/5 backdrop-blur sm:-left-8 sm:right-auto sm:px-5">
+            <p className="font-serif font-bold text-primary">{gabriela.name}</p>
+            <p className="text-sm text-earth">{gabriela.title}</p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

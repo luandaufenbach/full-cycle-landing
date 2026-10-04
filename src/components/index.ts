@@ -1,9 +1,11 @@
 export { Header } from './Header';
 export { Hero } from './Hero';
 export { ClientProfileSection } from './ClientProfileSection';
-export { GabrielaSection } from './GabrielaSection';
+export { ProcessSection } from './ProcessSection';
+export { AboutSection } from './AboutSection';
 export { DifferentialsSection } from './DifferentialsSection';
 export { TrustSection } from './TrustSection';
 export { FAQSection } from './FAQSection';
-export { CTAFinalSection } from './CTAFinalSection';
+export { ContactSection } from './ContactSection';
 export { Footer } from './Footer';
+export { WhatsAppButton } from './WhatsAppButton';
