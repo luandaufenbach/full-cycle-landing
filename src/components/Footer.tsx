@@ -1,117 +1,18 @@
-'use client';
-
-import { MessageCircle, Mail } from 'lucide-react';
-import { companyData, contactInfo } from '@/lib/constants';
-
-function LinkedInIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
+import { company } from '@/lib/constants';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-900 text-neutral-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-serif font-bold">
-                FC
-              </div>
-              <span className="font-serif font-bold text-white">Full Cycle</span>
-            </div>
-            <p className="text-sm text-neutral-400 mb-4">
-              Consultoria Ambiental e Restauração Ecológica
-            </p>
-            <p className="text-xs text-neutral-500">
-              <span className="block">CNPJ: {companyData.cnpj}</span>
-              <span className="block">Atendimento: {companyData.serviceArea}</span>
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Navegação</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#profile" className="hover:text-primary transition-colors">
-                  Qual é o seu caso?
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-primary transition-colors">
-                  Sobre Gabriela
-                </a>
-              </li>
-              <li>
-                <a href="#differential" className="hover:text-primary transition-colors">
-                  Diferenciais
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-primary transition-colors">
-                  Contato
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Contato</h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href={contactInfo.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                >
-                  <MessageCircle size={16} />
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href={contactInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                >
-                  <LinkedInIcon size={16} />
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                >
-                  <Mail size={16} />
-                  {contactInfo.email}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center pt-8 border-t border-neutral-700">
-          <p className="text-xs text-neutral-500">
-            © {currentYear} Full Cycle Consultoria e Restauração Ecológica.
-            <br />
-            Todos os direitos reservados.
-          </p>
-        </div>
+    <footer className="bg-mata-escuro text-sm text-papel/70">
+      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 sm:px-6 md:flex-row md:justify-between">
+        <p>
+          <span className="font-serif text-base font-bold text-papel">{company.name}</span>
+          <span className="ml-3">CNPJ {company.cnpj}</span>
+        </p>
+        <p>
+          © {year} {company.legalName}
+        </p>
       </div>
     </footer>
   );
